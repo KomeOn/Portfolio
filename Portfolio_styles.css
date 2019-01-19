@@ -1,0 +1,134 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	height: 100%;
+	margin: 0px;
+	background-color: lightgreen;
+}
+main {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100vw;
+}
+nav {
+	width: 10vw;
+	background-color: darkgreen;
+}
+.content {
+	width: 90vw;
+	background-color: aliceblue;
+}
+#home {
+	padding: 50px;
+}
+#home h1 {
+	text-align: center;
+	font-size: 64px;
+	margin: 4px 0px;
+}
+#home h3 {
+	text-align: center;
+	font-size: 15px;
+}
+#home img {
+	margin: 0px auto;
+	border: 4px solid lightgreen;
+	border-radius: 50px;
+}
+#about {
+	padding: 50px;
+}
+#about p {
+	padding: 0px 50px;
+}
+#contact {
+	padding: 50px;
+}
+#contact a {
+	text-decoration: none;
+	color: black;
+}
+#contact form input{
+	width: 100%;
+	height: 60px;
+	margin: 10px 0px;
+}
+.box {
+	padding: 20px;
+}
+.map h2 {
+	text-align: center;
+}
+.map a {
+	text-decoration: none;
+	color: black;
+}
+.box:hover {
+	background-color: lightgreen;
+}
+.show-info {
+	display: none;
+	height: 20px;
+	text-align: right;
+	background-image: linear-gradient(to right,blue 50%, white 50%);
+	margin: 0px 100px;
+	padding: 0px 10px;
+	border: 2px solid green;
+	border-radius: 50px;
+}
+.accordin:hover .show-info {
+	display: block;
+}
+main>.content>#contact>div {
+	margin: 0px auto;
+}
+main>.content>#contact>div>img {
+	width: 5%;
+	height: 5%;
+	cursor: pointer;
+	padding-right: 10px;
+}
+
+@media(min-width: 1000px)
+{
+	.box>h2 {
+		font-size: 24px;
+	}
+}
+@media(min-width: 720px) and (max-width: 1000px)
+{
+	.box {
+		padding: 20px 0px;
+	}
+	.box>h2 {
+		font-size: 1em;
+	}
+}
+@media(max-width: 720px)
+{
+	main {
+		overflow: hidden;		
+	}
+	nav {
+		width: 100%;
+		display: flex;
+	}
+	.box {
+		padding: 0px 20px;
+	}
+	.map img {
+		display: none;
+	}
+	.content {
+		width: 100%;
+		padding: 0px;
+	}
+	#home, #about, #contact {
+		padding: 20px;
+	}
+	main>.content>#contact>div>img {
+	width: 8%;
+	height: 8%;
+	}
+}
