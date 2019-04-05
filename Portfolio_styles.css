@@ -1,6 +1,11 @@
 * {
 	box-sizing: border-box;
 }
+@media (max-width: 800px){
+	.navbar {
+	}
+}
+/*
 body {
 	height: 100%;
 	margin: 0px;
@@ -140,4 +145,4 @@ main>.content>#contact>div>img {
 	width: 8%;
 	height: 8%;
 	}
-}
+} */
