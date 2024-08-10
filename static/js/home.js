@@ -91,3 +91,5 @@ document.querySelectorAll('.project').forEach(project => {
         window.open(projectDetailsUrl, '_blank');
     });
 });
+
+document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
