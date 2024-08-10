@@ -1,0 +1,147 @@
+$def with (chats)
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-size=1.0" /> 
+        <title>Sanket Sonowal</title>
+        <link rel="stylesheet" href="static/css/home.css"/>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="/static/images/page_logo.png" alt="Webiste logo" />
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/projects">Projects</a></li>
+                $if chats:
+                    <li><a href="/chats">Chats with me</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="bio-section">
+            <div class="bio-content">
+                <div class="bio-card">
+                    <div class="bio-card-inner">
+                        <div class="bio-card-front">
+                            <p class="bio-text">I am a passionate AI/ML developer focused on building intelligent systems that make life easier.</p>
+                            <button class="flip-button">Show More</button>
+                        </div>
+                        <div class="bio-card-back">
+                            <p><strong>Full Name:</strong> John Doe</p>
+                            <p><strong>Birthday:</strong> January 1, 1990</p>
+                            <p><strong>Email:</strong> johndoe@example.com</p>
+                            <button class="flip-button">Show Less</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="communication">
+                    <ul>
+                        <li><a href="#" id="github">GitHub</a></li>
+                        <li><a href="#" id="mail">Mail</a></li>
+                        <li><a href="#" id="linkedin">LinkedIn</a></li>
+                        <li><a href="#" id="instagram">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="photo-container">
+                <img src="path-to-your-photo.jpg" alt="Developer Photo">
+                <div class="border-animation"></div>
+            </div>
+        </section>
+        <!-- Message Form Modal -->
+        <div class="modal" id="messageModal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Send a Message</h2>
+                <form>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <section class="content-section">
+            <div class="tabs">
+                <button class="tab-link active" onclick="openTab(event, 'achievements')">Achievements</button>
+                <button class="tab-link" onclick="openTab(event, 'projects')">Projects</button>
+                <button class="tab-link" onclick="openTab(event, 'education')">Education</button>
+            </div>
+
+            <div class="tab-content" id="achievements">
+                <div class="achievement">
+                    <div class="achievement-left">
+                        <h3 class="achievement-title">Achievement Name</h3>
+                        <p class="achievement-description">A concise description of the achievement, highlighting the key aspects.</p>
+                    </div>
+                    <div class="achievement-right">
+                        <img src="trophy.png" alt="Trophy">
+                        <p class="achievement-date">June 2021</p>
+                    </div>
+                </div>
+                <!-- Add more achievements as needed -->
+            </div>
+
+            <div class="tab-content" id="projects">
+                <div class="project">
+                    <div class="project-left">
+                        <h3 class="project-title">Project Name</h3>
+                        <p class="project-description">A concise description of the project. It explains the purpose, scope, and key features of the project in about fifty words.</p>
+                        <div class="project-tags">
+                            <span class="tag"><img src="tag.png" alt="Tag Icon"> JavaScript</span>
+                            <span class="tag"><img src="tag.png" alt="Tag Icon"> Web Development</span>
+                            <span class="tag"><img src="tag.png" alt="Tag Icon"> Completed</span>
+                        </div>
+                    </div>
+                    <div class="project-right">
+                        <img src="project-logo.png" alt="Project Image">
+                    </div>
+                </div>
+                <!-- Add more projects as needed -->
+            </div>
+
+            <div class="tab-content" id="education">
+                <div class="education">
+                    <div class="education-left">
+                        <h3 class="education-title">Bachelor of Science in Computer Science</h3>
+                        <p class="education-institute">XYZ University</p>
+                        <p class="education-details">
+                            <span>Completion Year: 2020</span>
+                            <span>CGPA: 3.8/4.0</span>
+                        </p>
+                    </div>
+                    <div class="education-right">
+                        <img src="university-logo.png" alt="University Logo">
+                    </div>
+                </div>
+                <!-- Add more education entries as needed -->
+            </div>
+        </section>
+        <section>
+            <p>
+                Bottom view page: contains skills and work exp
+            </p>
+        </section>
+    </main>
+    <footer>
+        <p>
+            Made with things laying around
+        </p>
+    </footer>
+    <script src="/static/js/home.js"></script>
+</body>
+</html>

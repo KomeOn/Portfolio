@@ -1,0 +1,8 @@
+$def with (lists)
+
+<a href="/">Back</a>
+<ul>    
+    $for list in lists:
+    <li id="t$list.id">$list.project_name</li>
+    <li id="t$list.id">$list.project_description</li>
+</ul>
