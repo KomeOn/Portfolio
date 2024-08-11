@@ -1,8 +1,39 @@
-$def with (lists)
+$def with (projects)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project List</title>
+    <link rel="stylesheet" href="/static/css/projects.css">
+</head>
+<body>
+    <a href="/">Back</a>
+    <div class="project-list">
+        $for project in projects:
+            <div class="project-item" onclick="openProjectDetails(`/projects/${project.id}`)">
+                <div class="left-part">
+                    <h2 class="project-name">$project.project_name</h2>
+                    <p class="project-description">
+                        $project.project_description
+                    </p>
+                    <div class="project-tags">
+                        $for tag in project.project_tags:
+                            <span class="tag"><img src="/static/images/tags.svg" alt="Tag Icon" class="tag-icon"> $tag</span>
+                        <!-- <span class="tag">Web Development</span>
+                        <span class="tag">In Progress</span> -->
+                    </div>
+                </div>
+                <div class="right-part">
+                    <img src="$project.project_cover" alt="Project 1 Image" class="project-image">
+                </div>
+            </div>
+    </div>
 
-<a href="/">Back</a>
-<ul>    
-    $for list in lists:
-    <li id="t$list.id">$list.project_name</li>
-    <li id="t$list.id">$list.project_description</li>
-</ul>
+    <script>
+        function openProjectDetails(url) {
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>

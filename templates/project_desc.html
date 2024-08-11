@@ -1,7 +1,50 @@
-$def with (lists)
+$def with (projects)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Name</title>
+    <link rel="stylesheet" href="/static/css/project_desc.css">
+</head>
+<body>
+    <a href="/">Back</a>
+    $for project in projects:
+        <header>
+            <h1>$project.project_name</h1>
+        </header>
 
-<a href="/">Back</a>
-<ul>    
-    $for list in lists:
-    <li id="$list.id">$list.project_name</li>
-</ul>
+        <section class="project-description">
+            <p>
+                $project.project_details
+            </p>
+        </section>
+
+        <section class="project-info">
+            $for tag in project.project_tags:
+                <div class="tags">
+                    <span class="tag"><img src="/static/images/tags.svg" alt="Tag Icon" class="tag-icon"/> $tag</span>
+                </div>
+            <a href="$project.project_url" class="project-url" target="_blank">Visit Project</a>
+        </section>
+
+        <section class="project-media">
+            <div class="carousel">
+                $for pictures in project.project_images:
+                    <div class="carousel-item">
+                        <img src="$pictures" alt="Project Image 1">
+                    </div>
+                $for video in project.project_videos:
+                    <div class="carousel-item">
+                        <video controls>
+                            <source src="$video" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+            </div>
+        </section>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+
