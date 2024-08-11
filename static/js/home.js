@@ -66,10 +66,14 @@ hamburger.addEventListener('click', () => {
 const modal = document.getElementById("messageModal");
 const closeModal = document.querySelector(".close");
 
-document.querySelectorAll(".communication ul li a").forEach(item => {
-    item.addEventListener("click", () => {
-        modal.style.display = "block";
-    });
+// document.querySelectorAll(".communication ul li a").forEach(item => {
+    // item.addEventListener("click", () => {
+        // modal.style.display = "block";
+    // });
+// });
+
+document.getElementById("chat").addEventListener("click", () => {
+    modal.style.display = "block";
 });
 
 closeModal.addEventListener("click", () => {
@@ -82,13 +86,20 @@ window.addEventListener("click", (event) => {
     }
 });
 
-// Merged JavaScript code (already provided above)
-
 // Function to open project details in a new tab
 document.querySelectorAll('.project').forEach(project => {
     project.addEventListener('click', () => {
-        const projectDetailsUrl = "http://example.com/project-details"; // Replace with the actual project details URL
-        window.open(projectDetailsUrl, '_blank');
+        const projectID = project.getAttribute("id");
+        
+        // fetch(`/projects/urls/${projectID}`)
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         const projectDetailsUrl = data.url;
+        //         window.open(projectDetailsUrl, '_blank');
+        //     })
+        //     .catch(error => console.error('Error:', error));
+        const projectDetailsUrl = `/projects/${projectID}`; // Replace with the actual project details URL
+        window.open(projectDetailsUrl, '_blank');  
     });
 });
 
