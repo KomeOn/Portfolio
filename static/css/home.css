@@ -1,0 +1,608 @@
+/* Reset some default styles */
+body, ul {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures padding doesn't affect element width */
+}
+
+body {
+    font-family: Arial, sans-serif; /* Sets a default font for the body */
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensures header stays on top of other content */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(0, 0, 30); /* Dark background for the navbar */
+    padding: 0.2rem 2rem; /* Padding for spacing inside navbar */
+    transition: background-color 0.3s ease; /* Smooth background color change on scroll */
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: bold; /* Makes the logo text bold */
+}
+
+/* List of navigation links */
+.nav-links {
+    list-style: none;
+    display: flex; /* Horizontally aligns links */
+}
+
+.nav-links li {
+    margin-left: 2rem; /* Space between each navigation link */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff; /* White color for links */
+    font-size: 1rem;
+    transition: color 0.3s ease; /* Smooth color change on hover */
+}
+
+.nav-links a:hover {
+    color: #ff6347; /* Orange color on hover */
+}
+
+.hamburger {
+    display: none; /* Hidden by default, shown in media query */
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    height: 4px;
+    width: 25px;
+    background-color: #fff; /* White color for hamburger bars */
+    margin: 3px 0;
+    transition: all 0.3s ease;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        top: 70px; /* Adjusts position for mobile view */
+        right: 0;
+        height: 100vh; /* Full height for mobile nav */
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9); /* Dark background */
+        flex-direction: column; /* Stacks links vertically */
+        align-items: center;
+        justify-content: space-around;
+        transform: translateX(100%); /* Initially off-screen */
+        transition: transform 0.5s ease-in;
+    }
+
+    .nav-links li {
+        margin: 0; /* Removes margin in mobile view */
+    }
+
+    .hamburger {
+        display: flex; /* Shows hamburger menu */
+    }
+
+    .nav-active {
+        transform: translateX(0%); /* Brings the nav into view */
+    }
+
+    .navbar {
+        padding: 1rem; /* Larger padding for mobile view */
+    }
+}
+
+/* Scrolling effect */
+.scrolled {
+    background-color: rgba(0, 0, 0, 0.5); /* Lighter background when scrolling */
+}
+
+.logo img {
+    height: 100px; /* Adjust the height to fit your design */
+    width: auto; /* Maintains aspect ratio */
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    padding-top: 120px; /* Adds space to account for fixed navbar height */
+    min-height: 100vh; /* Ensures main section takes at least full viewport height */
+}
+
+.bio-section {
+    display: flex;
+    align-items: center;
+    background-color: #e0e0e0; /* Light gray background */
+    border-radius: 15px;
+    padding: 20px;
+    width: 88%;
+    /* max-width: 800px; */
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.bio-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Keeps content spaced evenly */
+    padding-right: 20px;
+    height: 300px; /* Fixed height to maintain consistent size */
+}
+
+.bio-card {
+    flex: 1; /* Takes up remaining space above communication section */
+    perspective: 1000px; /* Allows for 3D transformations */
+}
+
+.bio-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%; /* Ensures card takes full height */
+    transform-style: preserve-3d;
+    transition: transform 0.8s; /* Smooth flipping transition */
+}
+
+.bio-card.flipped .bio-card-inner {
+    transform: rotateY(180deg); /* Flips the card */
+}
+
+.bio-card-front, .bio-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%; /* Ensures both sides take full height */
+    backface-visibility: hidden;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+    align-items: center; /* Centers content horizontally */
+}
+
+.bio-card-front {
+    background: url('ai-ml-background.jpg') no-repeat center center / cover;
+}
+
+.bio-card-back {
+    transform: rotateY(180deg); /* Flips the back */
+}
+
+.bio-text {
+    color: #000; /* White text on the front */
+    font-size: 19px;
+}
+
+.flip-button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #e74c3c; /* Red button */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.flip-button:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}
+
+.communication {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.communication ul {
+    list-style: none;
+    display: flex;
+    gap: 15px; /* Space between communication links */
+    justify-content: center; /* Centers the communication links */
+}
+
+.communication ul li a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #3498db; /* Blue color for links */
+    transition: color 0.3s;
+}
+
+.communication ul li a:hover {
+    color: #e74c3c; /* Red color on hover */
+}
+
+.photo-container {
+    position: relative;
+    flex-shrink: 0;
+    margin-left: 20px;
+}
+
+.photo-container img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Circular image */
+    border: 4px solid #fff; /* White border */
+    position: relative;
+    z-index: 1;
+}
+
+.photo-container .border-animation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    border-top-color: #3498db; /* Blue top border */
+    border-bottom-color: #e74c3c; /* Red bottom border */
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    transition: all 0.5s ease;
+}
+
+.photo-container:hover .border-animation {
+    animation: rotate 2s linear infinite; /* Rotating animation on hover */
+}
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000; /* Sits above other content */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px; /* Limits the modal width */
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-top: 10px;
+}
+
+form input, form textarea {
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px;
+    background-color: #3498db; /* Blue button */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #e74c3c; /* Red on hover */
+}
+
+.content-section {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.tabs {
+    flex-basis: 20%;
+    display: flex;
+    flex-direction: column;
+    border-right: 2px solid #ccc;
+}
+
+.tab-link {
+    background-color: #e0e0e0; /* Light gray background */
+    color: #000; /* Black text */
+    padding: 15px;
+    text-align: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+}
+
+.tab-link:hover, .tab-link.active {
+    background-color: #3498db; /* Blue background on hover or active */
+    color: #fff; /* White text on hover or active */
+}
+
+.tab-content {
+    flex-basis: 80%;
+    padding: 20px;
+    display: none; /* Hidden by default */
+}
+
+.tab-content.active {
+    display: block; /* Shown when active */
+}
+
+/* Achievements */
+.achievement {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.achievement-left {
+    flex-basis: 80%;
+}
+
+.achievement-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.achievement-description {
+    font-size: 1rem;
+    color: #777;
+    margin-top: 5px;
+}
+
+.achievement-right {
+    flex-basis: 20%;
+    text-align: center;
+}
+
+.achievement-right img {
+    width: 60px;
+    height: 60px;
+}
+
+.achievement-date {
+    font-size: 0.9rem;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Projects */
+.project {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    cursor: pointer;
+    max-height: 260px;
+}
+
+.project-left {
+    flex-basis: 70%;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.project-description {
+    font-size: 1rem;
+    color: #777;
+    margin-top: 5px;
+}
+
+.project-tags {
+    margin-top: 10px;
+}
+
+.project-tags .tag {
+    display: inline-block;
+    background-color: #eee;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.project-tags .tag img {
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+}
+
+.project-right {
+    flex-basis: 30%;
+}
+
+.project-right img {
+    width: 100%;
+    max-height: 80%;
+    border-radius: 5px;
+}
+
+/* Education */
+.education {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.education-left {
+    flex-basis: 80%;
+}
+
+.education-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.education-institute {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 5px;
+}
+
+.education-details {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 5px;
+}
+
+.education-details span {
+    display: block;
+    margin-top: 3px;
+}
+
+.education-right {
+    flex-basis: 20%;
+    text-align: center;
+}
+
+.education-right img {
+    width: 50px;
+    height: 50px;
+}
+
+.experience-skills-section {
+    width: 80%;
+    max-width: 1000px;
+    margin: 20px 0;
+}
+
+.skills, .experience {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.skills h2, .experience h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+}
+
+.hard-skills, .soft-skills {
+    margin-bottom: 20px;
+}
+
+.hard-skills h3, .soft-skills h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #3498db;
+}
+
+.hard-skills ul, .soft-skills ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.hard-skills ul li, .soft-skills ul li {
+    background-color: #f4f4f4;
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 5px solid #3498db;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.soft-skills ul li {
+    border-left-color: #9b59b6;
+}
+
+.experience .job {
+    margin-bottom: 20px;
+}
+
+.job-details {
+    margin-bottom: 10px;
+}
+
+.job-details h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.job-details p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.job-details p strong {
+    color: #333;
+    display: block;
+}
+
+.description {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0; /* Padding to ensure spacing inside the footer */
+    position: relative;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1rem;
+}

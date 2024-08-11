@@ -1,0 +1,9 @@
+$def with (chats)
+
+<a href="/">Back</a>
+<ul>    
+    $for chat in chats:
+    <li id="t$chat.id">$chat.name</li>
+    <li id="t$chat.id">$chat.u_email</li>
+    <li id="t$chat.id">$chat.message</li>
+</ul>

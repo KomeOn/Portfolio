@@ -1,0 +1,232 @@
+$def with (chats, projects, achievements, educations, works)
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-size=1.0" /> 
+        <title>Sanket Sonowal</title>
+        <link rel="stylesheet" href="static/css/home.css"/>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="/static/images/page_logo.png" alt="Webiste logo" />
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/projects">Projects</a></li>
+                $if chats:
+                    <li><a href="/chats">Chats with me</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="bio-section">
+            <div class="bio-content">
+                <div class="bio-card">
+                    <div class="bio-card-inner">
+                        <div class="bio-card-front">
+                            <p class="bio-text">I’m a dedicated Python programmer with a strong background in AI/ML, deep learning, and generative AI. My experience spans across web development, 
+                                where I focus mainly on front-end technologies but also dive into back-end projects when needed. Additionally, I've explored the world of Python game development, 
+                                expanding my skills in interactive and creative programming.
+                            </p>
+                            <button class="flip-button">Flip me!!</button>
+                        </div>
+                        <div class="bio-card-back">
+                            <p class="bio-text">Hello, my name is Sanket Sonowal. Born in 14th July 1998, Delhi India. Though born in Delhi, my roots are from Assam. 
+                                Completed my formal education from Kendriya Vidyalaya Vikaspuri. My BTech degree in Computer Science and Engineering from Delhi Technological University, Delhi in 2020.
+                                My MTech in the same field .i.e, Computer Science and Engineering from Indian Institute of Technology, Assam in 2023. Currently working as a Senior Engineer in Tata Elxsi, TBU unit
+                            </p>
+                            <button class="flip-button">Flip me!!</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="communication">
+                    <ul>
+                        <li>
+                            <a href="https://github.com/KomeOn" target="_blank" id="github">
+                                <img src="/static/images/github.svg" alt="Github icon" width="20" height="20" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:sanketsonowal@outlook.com?subject=Hello&body=I%20am%20interested%20in%20your%20services." id="mail">
+                                <img src="/static/images/envelope.svg" alt="Mail icon" width="20" height="20"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="linkedin">
+                                <img src="/static/images/linkedin.svg" alt="LinkedIn icon" width="20" height="20"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="instagram">
+                                <img src="/static/images/instagram.svg" alt="Instagram icon" width="20" height="20"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="facebook">
+                                <img src="/static/images/facebook.svg" alt="Facebook icon" width="20" height="20"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="reddit">
+                                <img src="/static/images/reddit.svg" alt="Reddit icon" width="20" height="20"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="youtube">
+                                <img src="/static/images/youtube.svg" alt="Youtube icon" width="20" height="20"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="chat">
+                                <img src="/static/images/chat.svg" alt="Chat icon" width="20" height="20"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="photo-container">
+                <img src="/static/images/Por_image.PNG" alt="Developer Photo">
+                <div class="border-animation"></div>
+            </div>
+        </section>
+        <!-- Message Form Modal -->
+        <div class="modal" id="messageModal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Send a Message</h2>
+                <form>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <section class="content-section">
+            <div class="tabs">
+                <button class="tab-link active" onclick="openTab(event, 'achievements')">Achievements</button>
+                <button class="tab-link" onclick="openTab(event, 'projects')">Projects</button>
+                <button class="tab-link" onclick="openTab(event, 'education')">Education</button>
+            </div>
+
+            <div class="tab-content" id="achievements">
+                $for achievement in achievements:
+                    <div class="achievement">
+                        <div class="achievement-left">
+                            <h3 class="achievement-title">$achievement.achieve_name</h3>
+                            <p class="achievement-description">$achievement.achieve_description</p>
+                        </div>
+                        <div class="achievement-right">
+                            <img src="/static/images/genai_trophy.png" alt="Trophy">
+                            <p class="achievement-date">$achievement.achieve_date</p>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="tab-content" id="projects">
+                $for project in projects:
+                    <div class="project" id="$project.id">
+                        <div class="project-left">
+                            <h3 class="project-title">$project.project_name</h3>
+                            $if project.project_description:
+                                <p class="project-description">$project.project_description</p>
+                            <div class="project-tags">
+                                <span class="tag"><img src="/static/images/tags.svg" alt="Tag Icon"> $project.project_tags[0]</span>
+                                <span class="tag"><img src="/static/images/tags.svg" alt="Tag Icon"> $project.project_tags[1]</span>
+                                <span class="tag"><img src="/static/images/tags.svg" alt="Tag Icon"> $project.project_tags[2]</span>
+                            </div>
+                        </div>
+                        <div class="project-right">
+                            <img src="$project.project_cover" alt="Project Snapshot">
+                        </div>
+                    </div>
+            </div>
+
+            <div class="tab-content" id="education">
+                $for education in educations:
+                    <div class="education">
+                        <div class="education-left">
+                            $if education.edu_branch:
+                                <h3 class="education-title">$education.edu_degree, $education.edu_branch</h3>
+                            $else:
+                                <h3 class="education-title">$education.edu_degree</h3>
+                            <p class="education-institute">$education.edu_institute</p>
+                            <p class="education-details">
+                                <span>Completion Year: $education.edu_year</span>
+                                $if education.edu_result[1] == 100:
+                                    <span>Percentage: $education.edu_result[0]%</span>
+                                $else:
+                                    <span>CGPA: $education.edu_result[0]/$education.edu_result[1]</span>
+                            </p>
+                        </div>
+                        <div class="education-right">
+                            <img src="$education.edu_logo" alt="University Logo">
+                        </div>
+                    </div>
+            </div>
+        </section>
+        <section class="experience-skills-section">
+            <div class="skills">
+                <h2>Skills</h2>
+                <div class="hard-skills">
+                    <h3>Hard Skills</h3>
+                    <ul>
+                        <li>JavaScript</li>
+                        <li>Python</li>
+                        <li>React</li>
+                        <li>Node.js</li>
+                        <li>Express</li>
+                        <li>MongoDB</li>
+                        <li>GraphQL</li>
+                    </ul>
+                </div>
+                <div class="soft-skills">
+                    <h3>Soft Skills</h3>
+                    <ul>
+                        <li>MS Word</li>
+                        <li>MS PowerPoint</li>
+                        <li>Git</li>
+                        <li>Jira</li>
+                        <li>MS Sway</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience">
+                <h2>Work Experience</h2>
+                $for work in works:
+                    <div class="job">
+                        <div class="job-details">
+                            <h3>$work.work_post</h3>
+                            <p><strong>$work.work_comp</strong></p>
+                            $if work.work_current:
+                                <p>$work.work_join - Present | $work.work_period</p>
+                            $else:
+                                <p>$work.work_join - $work.work_end | $work.work_period</p>
+                            <p class="description">$work.work_desc</p>
+                        </div>
+                    </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>
+          &trade; and &copy; | Made with things laying around &hearts; | 2024 - <span id="copyright"></span>
+        </p>
+    </footer>
+    <script src="/static/js/home.js"></script>
+</body>
+</html>
